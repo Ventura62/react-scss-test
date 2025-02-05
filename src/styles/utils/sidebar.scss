@@ -1,0 +1,41 @@
+@use './borders.scss' as borders;
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+
+.custom--sidebar{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  &>.sidebar--button{
+    position: absolute;
+    top: 200px;
+    right: -15px;
+    width: 30px;
+    height: 30px;
+    background: #fff;
+    border: 1px solid var(--bs-gray-400);
+    background: #fff;
+  }
+  &>div{
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    &>.sidebar--item{
+      height: 2.5rem;
+      width: 100%;
+      padding: 0.5rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      border: borders.$no_border;
+      border-radius: 10px;
+      &>.sidebar--badge{
+        background-color: var(--bs-gray-400);
+        color: var(--bs-gray-900);
+      }
+    }
+  }
+}

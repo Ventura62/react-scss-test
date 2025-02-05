@@ -1,0 +1,29 @@
+@use '../components/viewHeader.scss';
+@use '../components/cards.scss';
+@use '../utils/borders.scss' as borders;
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+
+.main--section.monitor--view{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  &>.custom--section{
+    display: flex;
+    flex-direction: column;
+    border: borders.$solid_1px_ligth_border;
+    border-radius: 10px;
+    box-sizing: border-box;
+    gap: 10px;
+    padding: 1rem;
+    &>.custom--row{
+      gap: 10px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      &>.data--card{
+        flex: 1 1 30%;
+      }
+    }
+  }
+}

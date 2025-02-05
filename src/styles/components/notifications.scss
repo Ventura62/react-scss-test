@@ -1,0 +1,13 @@
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+
+.custom--toast{
+  border-radius: 1rem;
+  overflow: hidden;
+  &>div:first-child{
+    &>.btn-close, .btn-close:active, .btn-close:focus-visible{
+      outline: unset;
+      box-shadow: none;
+    }
+  }
+}

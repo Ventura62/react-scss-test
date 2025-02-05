@@ -1,0 +1,46 @@
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+
+.custom--monitor{
+  height: 500px;
+  background-color: var(--bs-gray-900);
+  color: var(--bs-gray-100);
+  font-family: 'Courier New', monospace;
+  border: 2px solid var(--bs-gray-900);
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow: hidden;
+  box-sizing: border-box;
+  &>.terminal.xterm.xterm-dom-renderer-owner-1{
+    &>.xterm-screen{
+      &>.xterm-rows{
+        &>div{
+          &>.xterm-cursor.xterm-cursor-outline{
+            animation: pulse-outline 0.5s infinite;
+          }
+          &>.xterm-decoration-top{
+            background-color: var(--bs-gray-900);
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes pulse-outline {
+  0% {
+    outline: 1px solid var(--bs-gray-900);
+    background-color: var(--bs-gray-900);
+  }
+  50% {
+    outline: 1px solid var(--bs-gray-100);
+    background-color: var(--bs-gray-100);
+  }
+  100% {
+    outline: 1px solid var(--bs-gray-900);
+    background-color: var(--bs-gray-900);
+  }
+}

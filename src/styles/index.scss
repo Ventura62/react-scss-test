@@ -1,0 +1,60 @@
+@use './layout.scss';
+/*utils*/
+@use './utils/buttons.scss';
+@use './utils/sidebar.scss';
+/*Views*/
+@use './views/login.scss';
+@use './views/configure.scss';
+@use './views/monitor.scss';
+/*Components*/
+@use './components/searchinput.scss';
+@use './components/notifications.scss';
+@use './components/terminalComponent.scss';
+@use './components/customModal.scss';
+@use './components/customTable.scss';
+
+html {
+  font-size: 18px;
+}
+
+html, body, #root {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6{
+  margin: 0;
+  font-weight: 500;
+}
+
+h1{
+  font-size: 1.75rem;
+}
+h2{
+  font-size: 1.60rem;
+}
+h3{
+  font-size: 1.45rem;
+}
+h4{
+  font-size: 1.30rem;
+}
+h5{
+  font-size: 1.15rem;
+}
+h6{
+  font-size: 1rem;
+}
+span{
+  font-size: 1rem;
+}
+
+input{
+  height: 30px;
+  padding: 5px 10px;
+}
+
+.input--100--width{
+  width: 100%;
+}

@@ -1,0 +1,72 @@
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+
+.custom--table{
+    width: 100%;
+    display: block;
+    .table {
+      margin: 0;
+      width: 100%;
+    &>thead {
+      &>tr {
+        border: none;
+        &>th{
+          font-size: 0.85rem;
+          padding: 0.25rem;
+          font-weight: 600;
+          margin: 0px;
+          vertical-align: top;
+          text-align: center;
+          background: var(--bs-secondary);
+          border: 1px solid var(--bs-secondary);
+          height: 20px;
+          box-sizing: border-box;
+          &>input, select{
+            font-size: 0.85rem;
+            padding: 0.25rem;
+            height: 100%;
+          }
+        }
+      }
+    }
+    &>tbody {
+      &>tr {
+        border: 1px solid var(--bs-secondary);
+        &>td{
+          font-size: 0.75rem;
+          padding: 0.25rem;
+          text-align: center;
+          border: none;
+          border-left: 1px solid var(--bs-secondary);
+          font-weight: 600;
+          vertical-align: middle;
+          &>.format--currency{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          &>.loss{
+            color: var(--bs-danger);
+          }
+        }
+        &>.action--cell{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: row;
+          gap: 0.15rem;
+          &>div {
+            cursor: pointer;
+            &>svg{
+              height: 20px;
+              width: 20px;
+              margin: 5px;
+            }
+          }
+        }
+      }
+    }
+    }
+  }
+  

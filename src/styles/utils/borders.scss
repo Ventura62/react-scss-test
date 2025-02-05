@@ -1,0 +1,12 @@
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+
+$no_border: none;
+
+$solid_1px_ligth_border: 1px solid var(--bs-gray-400);
+$solid_2px_ligth_border: 2px solid var(--bs-gray-400);
+$solid_3px_ligth_border: 3px solid var(--bs-gray-400);
+
+$solid_1px_dark_border: 1px solid var(--bs-gray-900);
+$solid_2px_dark_border: 2px solid var(--bs-gray-900);
+$solid_3px_dark_border: 3px solid var(--bs-gray-900);
