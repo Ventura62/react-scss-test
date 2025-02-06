@@ -21,7 +21,7 @@ import { getCurrentUser } from "@aws-amplify/auth";
 export const mainMenuItems = [
     { id: 'monitor', label: 'Monitor', icon: Monitor },
     { id: 'configure', label: 'Configure', icon: LucideSettings },
-    { id: 'clent', label: 'Clent', icon: UserCircle2 },
+    { id: 'client', label: 'Client', icon: UserCircle2 },
 ];
 
 export const secondaryMenus = {
