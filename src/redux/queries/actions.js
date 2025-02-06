@@ -41,15 +41,14 @@ const fetchGraphQL = async (query, variables = {}) => {
 };
 
 const handleThunkError = async (error, thunkAPI) => {
-  // const token = await idTokenKey();
-  // if (!token) {
-  //   return
-  // }
-  // console.error("Error:", error);
-  // const errorMessage = error.message || "An unknown error occurred";
-  // thunkAPI.dispatch(addNotification({ type: "danger", message: errorMessage, title: "Oops!" }));
-  // return thunkAPI.rejectWithValue(errorMessage);
-  return "";
+  const token = await idTokenKey();
+  if (!token) {
+    return
+  }
+  console.error("Error:", error);
+  const errorMessage = error.message || "An unknown error occurred";
+  thunkAPI.dispatch(addNotification({ type: "danger", message: errorMessage, title: "Oops!" }));
+  return thunkAPI.rejectWithValue(errorMessage);
 };
 
 export const getHealthMetrics = createAsyncThunk(
