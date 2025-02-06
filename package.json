@@ -15,6 +15,7 @@
     "bootstrap": "^5.3.3",
     "cra-template": "1.2.0",
     "jwt-decode": "^4.0.0",
+    "lucide-react": "^0.474.0",
     "react": "^19.0.0",
     "react-content-loader": "^7.0.2",
     "react-dom": "^19.0.0",
@@ -22,6 +23,7 @@
     "react-router-dom": "^7.1.1",
     "react-scripts": "^5.0.1",
     "reactstrap": "^9.2.3",
+    "recharts": "^2.15.1",
     "sass": "^1.83.0",
     "sass-loader": "^16.0.4",
     "web-vitals": "^4.2.4",
@@ -53,6 +55,7 @@
     ]
   },
   "devDependencies": {
+    "tailwindcss": "^3.4.17",
     "webpack-cli": "^6.0.1"
   }
 }

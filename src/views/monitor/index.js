@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Row } from "reactstrap";
 import { useLocation } from 'react-router-dom';
 
 import Sidebar from "src/components/layout/sidebar";
-import {ViewHeader, SectionHeaders} from "src/components/viewHeader";
+import { ViewHeader, SectionHeaders } from "src/components/viewHeader";
 import { DataCard, ListCard } from "src/components/cards";
 import { warning, danger } from "src/utils/getDefinedStyles";
 import { capitalize, secondsToDHMS, parsedDate } from "src/utils/others";
@@ -29,24 +29,24 @@ const Monitor = () => {
   const [selectedMonitor, setSelectedMonitor] = useState(null);
 
   useEffect(() => {
-    if(!monitorState.healthMetricsObtained){
+    if (!monitorState.healthMetricsObtained) {
       dispatch(getAllHealthMetrics("", ""));
     }
-  },[monitorState.healthMetricsObtained])
+  }, [monitorState.healthMetricsObtained])
 
   useEffect(() => {
-    if(!monitorState.protocolsObtained){
+    if (!monitorState.protocolsObtained) {
       dispatch(getAllProtocolsMetrics("", ""));
     }
-  },[monitorState.protocolsObtained])
+  }, [monitorState.protocolsObtained])
 
   useEffect(() => {
     setHealthMetrics(monitorState.healthMetrics);
-  },[monitorState.healthMetrics])
+  }, [monitorState.healthMetrics])
 
   useEffect(() => {
     setProtocols(monitorState.protocolsMetrics);
-  },[monitorState.protocolsMetrics])
+  }, [monitorState.protocolsMetrics])
 
   useEffect(() => {
     if (healtMetrics.length > 0 && protocols.length > 0) {
@@ -63,11 +63,11 @@ const Monitor = () => {
           },
           protocols: obj2
             ? {
-                protocol: obj2.protocol,
-                metrics: obj2.metrics,
-                timestamp: obj2.timestamp,
-                ...obj2.data,
-              }
+              protocol: obj2.protocol,
+              metrics: obj2.metrics,
+              timestamp: obj2.timestamp,
+              ...obj2.data,
+            }
             : {},
         };
       });
@@ -79,102 +79,103 @@ const Monitor = () => {
     setSelectedMonitor(monitor)
   }
 
-  if(!monitorState.healthMetricsObtained && !monitorState.protocolsObtained && monitors.length > 0){
-    return(
-      <MonitorLoader/>
+  if (!monitorState.healthMetricsObtained && !monitorState.protocolsObtained && monitors.length > 0) {
+    return (
+      <MonitorLoader />
     )
   }
 
-  return(
+  return (
     <>
       <Sidebar
         items={monitors}
         selectItem={selectMonitor}
         selectedItem={selectedMonitor}
         sidebarStatus={openSidebar}
-        changeSidebarStatus={()=>setOpenSidebar((prevState) => !prevState)}/>
+        changeSidebarStatus={() => setOpenSidebar((prevState) => !prevState)} />
       <div className="main--section monitor--view">
-        {selectedMonitor !== null?
+        {selectedMonitor !== null ?
           <>
             <Row className="custom--row">
               <ViewHeader
-                title={`Monitor: ${selectedMonitor.hostname}`}/>
+                title={`Monitor: ${selectedMonitor.hostname}`} />
             </Row>
             <div className="custom--section">
-              {Object.keys(selectedMonitor.protocols).length !== 0?
-              <>
-                <SectionHeaders 
-                  title={capitalize(selectedMonitor.healtMetrics.metrics)}
-                  timestamp={parsedDate(selectedMonitor.healtMetrics.timestamp)}/>
-                <div className="custom--row">
-                  <DataCard
-                    title="CPU temperature (°C)"
-                    mainData={`${selectedMonitor.healtMetrics.cpuTemperature}`}
-                    footer=""/>
-                  <DataCard
-                    title="CPU utilization (%)"
-                    mainData={`${selectedMonitor.healtMetrics.cpuUtilization}`}
-                    footer=""/>
-                  <DataCard
-                    title="Device Uptime"
-                    mainData={`${selectedMonitor.healtMetrics.deviceUptime}`}
-                    footer=""/>
-                </div>
-                <div className="custom--row">
-                  <DataCard
-                    title="OS version"
-                    mainData={`${selectedMonitor.healtMetrics.osVersion}`}
-                    footer=""/>
-                  <DataCard
-                    title="PSU 1"
-                    mainData={`${selectedMonitor.healtMetrics.psu1}`}
-                    footer=""/>
-                  <DataCard
-                    title="PSU 2"
-                    mainData={`${selectedMonitor.healtMetrics.psu2}`}
-                    footer=""/>
-                </div>
-              </>:
-              <>
-                <SectionHeaders title={`No health metrics found`}/>
-              </>}
+              {Object.keys(selectedMonitor.protocols).length !== 0 ?
+                <>
+                  <SectionHeaders
+                    title={capitalize(selectedMonitor.healtMetrics.metrics)}
+                    timestamp={parsedDate(selectedMonitor.healtMetrics.timestamp)} />
+                  <div className="custom--row">
+                    <DataCard
+                      title="CPU temperature (°C)"
+                      mainData={`${selectedMonitor.healtMetrics.cpuTemperature}`}
+                      footer="" />
+                    <DataCard
+                      title="CPU utilization (%)"
+                      mainData={`${selectedMonitor.healtMetrics.cpuUtilization}`}
+                      footer="" />
+                    <DataCard
+                      title="Device Uptime"
+                      mainData={`${selectedMonitor.healtMetrics.deviceUptime}`}
+                      footer="" />
+                  </div>
+                  <div className="custom--row">
+                    <DataCard
+                      title="OS version"
+                      mainData={`${selectedMonitor.healtMetrics.osVersion}`}
+                      footer="" />
+                    <DataCard
+                      title="PSU 1"
+                      mainData={`${selectedMonitor.healtMetrics.psu1}`}
+                      footer="" />
+                    <DataCard
+                      title="PSU 2"
+                      mainData={`${selectedMonitor.healtMetrics.psu2}`}
+                      footer="" />
+                  </div>
+                </> :
+                <>
+                  <SectionHeaders title={`No health metrics found`} />
+                </>}
             </div>
             <div className="custom--section">
-              {Object.keys(selectedMonitor.protocols).length !== 0?
-              <>
-                <SectionHeaders 
-                  title={capitalize(selectedMonitor.protocols?.metrics)}
-                  timestamp={parsedDate(selectedMonitor.healtMetrics.timestamp)}/>
-                <div className="custom--row">
-                  <DataCard
-                    title="Protocol"
-                    mainData={`${selectedMonitor.protocols?.protocol}`}
-                    footer=""/>
-                  <DataCard
-                    title="IP Address"
-                    mainData={`${selectedMonitor.protocols?.neighbor}`}
-                    footer=""/>
-                </div>
-                <div className="custom--row">
-                  <DataCard
-                    title="Description"
-                    mainData={`${selectedMonitor.protocols?.neiDescription}`}
-                    footer=""/>
-                  <DataCard
-                    title="State"
-                    mainData={`${selectedMonitor.protocols?.peerState}`}
-                    footer=""/>
-                </div>
-              </>:
-              <>
-                <SectionHeaders title={`No protocol found`}/>
-              </>}
+              {Object.keys(selectedMonitor.protocols).length !== 0 ?
+                <>
+                  <SectionHeaders
+                    title={capitalize(selectedMonitor.protocols?.metrics)}
+                    timestamp={parsedDate(selectedMonitor.healtMetrics.timestamp)} />
+                  <div className="custom--row">
+                    <DataCard
+                      title="Protocol"
+                      mainData={`${selectedMonitor.protocols?.protocol}`}
+                      footer="" />
+                    <DataCard
+                      title="IP Address"
+                      mainData={`${selectedMonitor.protocols?.neighbor}`}
+                      footer="" />
+                  </div>
+                  <div className="custom--row">
+                    <DataCard
+                      title="Description"
+                      mainData={`${selectedMonitor.protocols?.neiDescription}`}
+                      footer="" />
+                    <DataCard
+                      title="State"
+                      mainData={`${selectedMonitor.protocols?.peerState}`}
+                      footer="" />
+                  </div>
+                </> :
+                <>
+                  <SectionHeaders title={`No protocol found`} />
+                </>}
             </div>
-          </>:
+          </> :
           <>
             <Row className="custom--row">
               <ViewHeader
-                title={"No monitor selected"}/>
+                title={"No monitor selected"} />
+
             </Row>
           </>
         }

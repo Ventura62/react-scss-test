@@ -18,20 +18,20 @@ const monitorSlice = createSlice({
   initialState: initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getAllHealthMetrics.fulfilled, (state, action)=>{
+    builder.addCase(getAllHealthMetrics.fulfilled, (state, action) => {
       state.healthMetricsObtained = true;
       state.login = false;
       state.healthMetrics = action.payload && action.payload.length > 0 ? action.payload : [];
     })
     builder.addCase(getAllHealthMetrics.rejected, (state, action) => {
-      state.healthMetricsObtained= false;
+      state.healthMetricsObtained = false;
       state.login = false;
     })
     builder.addCase(getAllHealthMetrics.pending, (state, action) => {
       state.healthMetricsObtained = false;
       state.login = true;
     })
-    builder.addCase(getAllProtocolsMetrics.fulfilled, (state, action)=>{
+    builder.addCase(getAllProtocolsMetrics.fulfilled, (state, action) => {
       state.protocolsObtained = true;
       state.login = false;
       state.protocolsMetrics = action.payload && action.payload.length > 0 ? action.payload : [];

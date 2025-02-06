@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'src/styles/index.scss';
+import "./index.css";
 import 'src/utils/amplifyConfigure';
 
 import { store } from './redux/store';
