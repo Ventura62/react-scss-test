@@ -8,7 +8,7 @@ const fetchGraphQL = async (query, variables = {}) => {
   try {
     const token = idTokenKey();
     if (!token) {
-      throw new Error("Authentication token is missing.");
+      console.log("Authentication token is missing.");
     }
 
     console.log("Sending GraphQL Query:", query);
