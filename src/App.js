@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router";
+import React, { useEffect } from "react";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router";
 
 import NotificationsManager from "src/components/notifications";
 import Views from "./views";
@@ -8,40 +8,12 @@ import { ThemeProvider } from "./context/theme";
 import MergedMonitor from "./views/NewMonitor";
 import Configure from "./views/configure";
 import { getCurrentUser } from "@aws-amplify/auth";
+import PrivateRoute from "./privateRoute";
+
+
 
 function App() {
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const checkUser = async () => {
-      try {
-        const user = await getCurrentUser();
-        console.log("User details:", user);
-        if (user?.signInDetails?.loginId) {
-          setLoading(false);
-        }
-
-        if (!user?.signInDetails?.loginId && window.location.pathname !== "/login") {
-          setLoading(false);
-          window.location.href = "/login";
-
-        }
-      } catch (error) {
-        console.error("Error fetching user:", error);
-        setLoading(false);
-        if (window.location.pathname !== "/login") {
-          window.location.href = "/login";
-
-        }
-      }
-    };
-
-    checkUser();
-  }, []);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <>
@@ -49,8 +21,8 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/login" element={<Login />} />
-            <Route path="/" element={<MergedMonitor />} />
-            <Route path="/configure" element={<Configure />} />
+            <Route path="/" element={<PrivateRoute><MergedMonitor /></PrivateRoute>} />
+            <Route path="/configure" element={<PrivateRoute><Configure /></PrivateRoute>} />
             <Route path="/monitor" element={<Views />} />
           </Routes>
         </BrowserRouter>
