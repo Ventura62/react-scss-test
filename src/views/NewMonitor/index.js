@@ -65,6 +65,7 @@ function MergedMonitor() {
     useEffect(() => {
         const checkUser = async () => {
             try {
+                console.log(">>>@1")
                 const user = await getCurrentUser();
                 if (user && user.signInDetails && user.signInDetails.loginId) {
 
